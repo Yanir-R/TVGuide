@@ -5,7 +5,7 @@ import { ShowSearchResults } from "./pages/ShowSearchResult";
 import { Main } from "./pages/Main";
 import { ShowDetails } from "./pages/ShowDetails";
 
-export const App: React.FC<any> = ({ pageNumber }) => {
+export const App: React.FC<any> = () => {
   return (
     <Router>
       <Header />

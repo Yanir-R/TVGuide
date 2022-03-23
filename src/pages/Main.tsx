@@ -5,21 +5,20 @@ import { ShowService } from "../services/ShowService";
 import { Show } from "../react-app-env";
 import { Paginate } from "../components/Paginate";
 import { Grid, LinearProgress } from "@mui/material";
-import { ShowSearchResults } from "./ShowSearchResult";
 
 export const Main: React.FC = () => {
   const [showsData, setShowsData] = useState<Show[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
-
-  useEffect(() => {
-    fetchShowsData(pageNumber);
-  }, [pageNumber]);
 
   const fetchShowsData = async (pageNumber: number) => {
     await api.getAllShows(pageNumber).then((data) => {
       setShowsData(data.map(ShowService.normalizeShowData));
     });
   };
+
+  useEffect(() => {
+    fetchShowsData(pageNumber);
+  }, [pageNumber]);
 
   return (
     <>

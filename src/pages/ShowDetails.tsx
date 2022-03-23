@@ -13,15 +13,15 @@ export const ShowDetails: React.FC = () => {
   const [showDetails, setShowDetails] = useState<ShowDetailsProps>({ name: "", summary: "", image: { medium: "" } });
   const { id } = useParams();
 
-  useEffect(() => {
-    fetchShowById(id);
-  }, [id]);
-
   let fetchShowById = (id: any) => {
     api.showById(id).then((data) => {
       setShowDetails(data);
     });
   };
+
+  useEffect(() => {
+    fetchShowById(id);
+  }, [id]);
 
   return (
     <>

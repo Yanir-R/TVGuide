@@ -10,12 +10,10 @@ export const api = {
       console.log("error in api->", err);
     }
   },
-
   showById: async (id: string) => {
     try {
       const response = await ShowService.showById(id);
       const showById = await response.data;
-      console.log("show by id data->", showById);
       return showById;
     } catch (err) {
       console.log("error in api->", err);
