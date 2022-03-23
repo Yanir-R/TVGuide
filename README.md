@@ -9,7 +9,7 @@
 <code> npm start </code>
 
 ## Introduction
-An app with React & Typescript & MUI,  based on [TVmaze API](https://www.tvmaze.com/api) that is a TV guide for users to look for favorite TV shows
+An app with React & Typescript & MUI, based on [TVmaze API](https://www.tvmaze.com/api) which is a TV guide for users to look for favorite TV shows
 
 ## Features
 - [X] Search for TV shows
