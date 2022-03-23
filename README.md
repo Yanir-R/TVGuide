@@ -1,4 +1,5 @@
-![image](https://user-images.githubusercontent.com/67261194/159757509-2c9c51f7-bbe3-4d1b-9872-724de7438317.png)
+![image](https://user-images.githubusercontent.com/67261194/159782683-ba7bc219-cc68-459f-9d18-e9c052cec135.png)
+
 
 ## Get Started
  #### Clone the repo:
@@ -21,9 +22,9 @@ An app with React & Typescript & MUI, based on [TVmaze API](https://www.tvmaze.c
 
 ## Instructions
 - Open the application in your browser at <code>http://localhost:3000/</code> <br/>
-- The site will load dynamically 200~ shows. User can switch to the next page to load more shows
+- The site will load dynamically 200~ shows, user can switch to the next page to load more shows
 - Clicking on the image of each show opens a new page with more details about the show
-- Use the navbar in the left corner to quickly switch between Home and Search
+- Click on the logo to redirect to home page
 
 ## Motivation
 This project was created to test my proficiency with React, TypeScript, and MUI.
