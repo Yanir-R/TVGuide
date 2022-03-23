@@ -1,61 +1,51 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../api";
 import { ShowsList } from "../components/ShowsList";
-import { SearchBar } from "../components/SearchBar";
-import { ShowsSearch } from "../components/showsSearch";
+import { ShowService } from "../services/ShowService";
+import { Show } from "../react-app-env";
+import { Paginate } from "../components/Paginate";
+import { Grid, LinearProgress } from "@mui/material";
+import { ShowSearchResults } from "./ShowSearchResult";
 
 export const Main: React.FC = () => {
-  const [searchData, setSearchData] = useState<any[]>([]);
-  const [showsData, setShowsData] = useState<any[]>([]);
-  const [search, setSearch] = useState("");
+  const [showsData, setShowsData] = useState<Show[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
-    fetchShowsData();
+    fetchShowsData(pageNumber);
   }, [pageNumber]);
 
-  const fetchShowsData = async () => {
+  const fetchShowsData = async (pageNumber: number) => {
     await api.getAllShows(pageNumber).then((data) => {
-      setShowsData(
-        data.map((result: any) => {
-          return {
-            name: result.name,
-            image: result.image ? (result.image = result.image.medium) : (result.image = ""),
-            language: result.language,
-            genres: result.genres.slice(0, 3).join(", "),
-            id: result.id,
-            url: result.url,
-          };
-        })
-      );
-    });
-  };
-
-  let searchShow = () => {
-    api.searchTvShows(search).then((data) => {
-      setSearchData(
-        data.map((result: any) => {
-          return {
-            name: result.show.name,
-            image: result.show.image ? (result.image = result.show.image.medium) : (result.image = ""),
-            language: result.show.language,
-            genres: result.show.genres.slice(0, 3).join(", "),
-            id: result.show.id,
-          };
-        })
-      );
+      setShowsData(data.map(ShowService.normalizeShowData));
     });
   };
 
   return (
     <>
-      <h1>Main Page</h1>
-      <SearchBar search={search} setSearch={setSearch} searchShow={searchShow} />
-      {searchData.length === 0 ? (
-        <ShowsList data={showsData} setPageNumber={setPageNumber} pageNumber={pageNumber} />
-      ) : (
-        <ShowsSearch data={searchData} />
-      )}
+      <Grid container justifyContent="center" alignItems="center">
+        <Grid item xs={12}>
+          {showsData.length > 0 ? (
+            <>
+              <Paginate setPageNumber={setPageNumber} />
+              <ShowsList showsData={showsData} />
+            </>
+          ) : (
+            <Grid
+              sx={{
+                margin: "auto",
+                padding: "5rem",
+                maxWidth: 500,
+              }}
+            >
+              <LinearProgress />
+            </Grid>
+          )}
+        </Grid>
+        <Grid item xs={12}>
+          <ShowSearchResults />
+        </Grid>
+      </Grid>
     </>
   );
 };

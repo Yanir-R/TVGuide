@@ -5,7 +5,6 @@ export const api = {
     try {
       const response = await ShowService.searchTvShows(query);
       const searchShows = await response.data;
-      //   console.log("shows search data->", searchShows);
       return searchShows;
     } catch (err) {
       console.log("error in api->", err);
@@ -26,7 +25,6 @@ export const api = {
     try {
       const response = await ShowService.getAllShows(pageNumber + 1 || 1);
       const allShows = await response.data;
-      // console.log("all shows data->", allShows);
       return allShows;
     } catch (err) {
       console.log("error in api->", err);

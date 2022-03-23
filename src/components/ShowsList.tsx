@@ -1,28 +1,29 @@
 import React from "react";
+import { Box } from "@mui/material";
+import { ShowsPage } from "./ShowsPage";
+import { Show } from "../react-app-env";
 
-import { ShowsPage } from "../pages/ShowsPage";
-import { Pagination } from "./Pagination";
-
-export const ShowsList: React.FC<any> = ({ data, pageNumber, setPageNumber }) => {
+export const ShowsList: React.FC<{
+  showsData: Show[];
+}> = ({ showsData }) => {
   return (
-    <div>
-      <h1>Shows List</h1>
-      <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
-      {data.map((result: any) => {
-        // console.log("result from show list ->", result);
-        return (
-          <>
+    <Box m={2} sx={{ display: "flex", flexWrap: "wrap ", p: 1, m: 1 }}>
+      <>
+        {showsData.map((result: Show) => {
+          return (
             <ShowsPage
-              key={result.url}
+              key={result.id}
               name={result.name}
               image={result.image}
               language={result.language}
               genres={result.genres}
               id={result.id}
+              premiered={result.premiered}
+              ended={result.ended}
             />
-          </>
-        );
-      })}
-    </div>
+          );
+        })}
+      </>
+    </Box>
   );
 };
