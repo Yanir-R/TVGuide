@@ -3,26 +3,25 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { api } from "../api";
 
-export const ShowDetails: React.FC = () => {
-  interface ShowDetailsProps {
-    name: string;
-    image: { medium: string };
-    summary: string;
-  }
+interface ShowDetailsProps {
+  name: string;
+  image: { medium: string };
+  summary: string;
+}
 
+export const ShowDetails: React.FC = () => {
   const [showDetails, setShowDetails] = useState<ShowDetailsProps>({ name: "", summary: "", image: { medium: "" } });
   const { id } = useParams();
-
-  let fetchShowById = (id: any) => {
-    api.showById(id).then((data) => {
-      console.log("showid data", data);
-      setShowDetails(data);
-    });
-  };
 
   useEffect(() => {
     fetchShowById(id);
   }, [id]);
+
+  let fetchShowById = (id: any) => {
+    api.showById(id).then((data) => {
+      setShowDetails(data);
+    });
+  };
 
   return (
     <>
@@ -42,8 +41,8 @@ export const ShowDetails: React.FC = () => {
                 ></Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions>
-              <Link to="*">👉 🏠</Link>
+            <CardActions sx={{ m: 1 }}>
+              <Link to="/">👉 🏠</Link>
             </CardActions>
           </Card>
         </Box>

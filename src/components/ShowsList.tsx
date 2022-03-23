@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import { ShowsPage } from "./ShowsPage";
+import { ShowItem } from "./ShowItem";
 import { Show } from "../react-app-env";
 
 export const ShowsList: React.FC<{
@@ -11,7 +11,7 @@ export const ShowsList: React.FC<{
       <>
         {showsData.map((result: Show) => {
           return (
-            <ShowsPage
+            <ShowItem
               key={result.id}
               name={result.name}
               image={result.image}

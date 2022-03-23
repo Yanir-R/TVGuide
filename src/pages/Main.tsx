@@ -42,9 +42,6 @@ export const Main: React.FC = () => {
             </Grid>
           )}
         </Grid>
-        <Grid item xs={12}>
-          <ShowSearchResults />
-        </Grid>
       </Grid>
     </>
   );

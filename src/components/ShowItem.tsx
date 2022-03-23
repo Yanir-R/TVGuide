@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Show } from "../react-app-env";
 
-export const ShowsPage: React.FC<Show> = ({ name, image, language, genres, id, ended, premiered }) => {
+export const ShowItem: React.FC<Show> = ({ name, image, language, genres, id, ended, premiered }) => {
   return (
     <Box m={5} p={1} sx={{ display: "flex", width: 250 }}>
       <Card>
